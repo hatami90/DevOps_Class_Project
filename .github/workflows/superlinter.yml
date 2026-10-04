@@ -1,37 +1,22 @@
----
 name: Super-Linter
 
 on:
   push:
-    branches: [main, master]
+    branches: [master]
   pull_request:
-    branches: [main, master]
-
-# Izinkan Super-Linter membaca kode dan menulis status check
-permissions:
-  contents: read
-  packages: read
-  statuses: write
+    branches: [master]
 
 jobs:
   super-lint:
     name: Lint code base
     runs-on: ubuntu-latest
+
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
-        with:
-          fetch-depth: 0
 
       - name: Run Super-Linter
         uses: super-linter/super-linter@v8.7.0
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           DEFAULT_BRANCH: master
-          VALIDATE_ALL_CODEBASE: false
-          # Mematikan pengecekan yang sering error pada repo konten biasa
-          VALIDATE_CHECKOV: false
-          VALIDATE_GITHUB_ACTIONS_ZIZMOR: false
-          # Memastikan formatting YAML dan Markdown rapi
-          VALIDATE_YAML: true
-          VALIDATE_MARKDOWN: true
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
