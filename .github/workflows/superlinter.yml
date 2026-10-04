@@ -22,23 +22,9 @@ jobs:
         env:
           DEFAULT_BRANCH: master
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          # Hanya jalankan pengecekan penting saja
+          # Hanya aktifkan linter ini (sisanya otomatis nonaktif)
           VALIDATE_YAML: true
-          VALIDATE_MARKDOWN: false
+          VALIDATE_MARKDOWN: true
           VALIDATE_GITHUB_ACTIONS: true
-          # Matikan semua yang lain
-          VALIDATE_CHECKOV: false
-          VALIDATE_GITHUB_ACTIONS_ZIZMOR: false
-          VALIDATE_BIOME_FORMAT: false
-          VALIDATE_BIOME_LINT: false
-          VALIDATE_GITLEAKS: false
-          VALIDATE_GIT_MERGE_CONFLICT_MARKERS: false
-          VALIDATE_JSCPD: false
-          VALIDATE_MARKDOWN_PRETTIER: false
-          VALIDATE_NATURAL_LANGUAGE: false
-          VALIDATE_PRE_COMMIT: false
-          VALIDATE_SPELL_CODESPELL: false
-          VALIDATE_TRIVY: false
-          VALIDATE_YAML_PRETTIER: false
-          # Abaikan folder content agar tidak dicek
+          # Abaikan folder content
           FILTER_REGEX_EXCLUDE: .*content/.*
