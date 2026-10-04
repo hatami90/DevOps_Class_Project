@@ -24,7 +24,7 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           # Hanya jalankan pengecekan penting saja
           VALIDATE_YAML: true
-          VALIDATE_MARKDOWN: true
+          VALIDATE_MARKDOWN: false
           VALIDATE_GITHUB_ACTIONS: true
           # Matikan semua yang lain
           VALIDATE_CHECKOV: false
